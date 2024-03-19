@@ -46,6 +46,6 @@ public class RestPaymentVNPayController {
         model.addAttribute("paymentTime", paymentTime);
         model.addAttribute("transactionId", transactionId);
 
-        return paymentStatus == 1 ? "/User/home" : "orderfail";
+        return paymentStatus == 1 ? "ordersuccess" : "orderfail";
     }
 }

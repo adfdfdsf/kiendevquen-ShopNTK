@@ -2,16 +2,15 @@ package ntk.tlu.project1.entity;
 
 import java.util.List;
 
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
-
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Data;
 
@@ -37,6 +36,8 @@ public class ProductEntity {
 	@ManyToMany(mappedBy = "products")
 	private List<UserEntity> users;
 	
+	@OneToMany(mappedBy = "productEntity", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<BillitemsEntity> billitemsEntities;
 	// user and productCart
 	
 	public String getProductType() {

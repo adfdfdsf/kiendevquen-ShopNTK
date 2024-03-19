@@ -58,6 +58,9 @@ public class UserController {
 
 		// in ra name
 		String kien = (String) session.getAttribute("name");
+		if(kien == null || kien.isEmpty()) {
+			return "redirect:/api/login";
+		}
 		model.addAttribute("kien", kien);
 		return "User/home";
 	}
@@ -69,6 +72,9 @@ public class UserController {
 		List<ProductModel> productModel = productServices.searchProduct(search);
 		model.addAttribute("productEntity", productModel);
 		String kien = (String) session.getAttribute("name");
+		if(kien == null && kien.isEmpty()) {
+			return "redirect:/api/login";
+		}
 		model.addAttribute("kien", kien);
 		return "User/category";
 	}
@@ -77,6 +83,9 @@ public class UserController {
 	public String detail(@RequestParam("id") int id, Model model, HttpSession session) {
 		model.addAttribute("productEntity", productServices.searchId(id));
 		String kien = (String) session.getAttribute("name");
+		if(kien == null && kien.isEmpty()) {
+			return "redirect:/api/login";
+		}
 		model.addAttribute("kien", kien);
 		session.setAttribute("idProduct", id);
 		return "User/detail";
@@ -86,8 +95,9 @@ public class UserController {
 	@GetMapping("/wishlist")
 	public String wishList(Model model, HttpSession session) {
 		String name = (String) session.getAttribute("name");
+		Integer idUser = (Integer) session.getAttribute("idUser"); 
+		if(name == null && name.isEmpty() || idUser == null) return "redirect:/api/login";
 		model.addAttribute("name", name);
-		int idUser = (Integer) session.getAttribute("idUser");
 		model.addAttribute("wishList", userServices.showUserid(idUser).getProducts());
 		return "/User/my-wishlist";
 	}
@@ -97,7 +107,8 @@ public class UserController {
 	// create product vao danh sach yeu thich
 	@GetMapping("/createWishlist")
 	public String createWishList(HttpSession session, @RequestParam("id") int idProduct, HttpServletRequest request) {
-		int idUser = (Integer) session.getAttribute("idUser");
+		Integer idUser = (Integer) session.getAttribute("idUser");
+		if(idUser == null) return "redirect:/api/login";
 		userServices.createProductUser(idUser, idProduct);
 		return "redirect:" + request.getHeader("Referer");
 	}
@@ -105,29 +116,37 @@ public class UserController {
 	// remove product khoi danh sach yeu thich
 	@GetMapping("/removeWishlist")
 	public String removeWishlist(HttpSession session, @RequestParam("id") int id) {
-		int idUser = (Integer) session.getAttribute("idUser");
+		Integer idUser = (Integer) session.getAttribute("idUser");
+		if(idUser == null) return "redirect:/api/login";
 		userServices.removeWishList(idUser, id);
 		return "redirect:/User/wishlist";
 	}
 	
 	//Dieu Khoan va Dieu Kien
 	@GetMapping("/dieukhoanvadichvu")
-	public String dieukhoanvadk() {
+	public String dieukhoanvadk(HttpSession session,Model model) {
+		String name = (String) session.getAttribute("name");
+		if(name == null && name.isEmpty()) return "redirect:/api/login";
+		model.addAttribute("name",name);
 		return "User/dieukhoanvadieukien";
 	}
 	
 	//cau hoi thuong gap
 	@GetMapping("/cauhoithuonggap")
-	public String cauhoithuonggap() {
+	public String cauhoithuonggap(HttpSession session,Model model) {
+		String name = (String) session.getAttribute("name");
+		if(name == null ||  name.isEmpty()) return "redirect:/api/login";
+		model.addAttribute("name",name);
 		return "User/faq";
 	}
 
 	// Account User
 	@GetMapping("/account")
 	public String accountUser(Model model, HttpSession session) {
-		int idUser = (Integer) session.getAttribute("idUser");
-		model.addAttribute("userModel", userServices.showUserid(idUser));
+		Integer idUser = (Integer) session.getAttribute("idUser");
 		String name = (String) session.getAttribute("name");
+		if(name == null || idUser == null) return "redirect:/api/login";
+		model.addAttribute("userModel", userServices.showUserid(idUser));
 		model.addAttribute("name", name);
 		return "User/account-user";
 	}
@@ -140,7 +159,8 @@ public class UserController {
 	// show shopping cart
 	@GetMapping("/cart")
 	public String shoppingCart(Model model, HttpSession session) {
-		int idUser = (Integer) session.getAttribute("idUser");
+		Integer idUser = (Integer) session.getAttribute("idUser");
+		if(idUser == null) return "redirect:/api/login";
 		model.addAttribute("name", userServices.showUserid(idUser).getName());
 		model.addAttribute("listProducts", productCartServices.showlistPinPC(idUser));
 		model.addAttribute("listQuantitis", productCartServices.showlistQinPC(idUser)); // 2 4 6
@@ -151,7 +171,8 @@ public class UserController {
 	@GetMapping("/createCart")
 	public String createProductCart(Model model, HttpServletRequest request, @RequestParam("id") int id,
 			@RequestParam(value = "soluong", defaultValue = "1") String soluong, HttpSession session) {
-		int idUser = (Integer) session.getAttribute("idUser");
+		Integer idUser = (Integer) session.getAttribute("idUser");
+		if(idUser == null) return "redirect:/api/login";
 		productCartServices.createProductCart(idUser, id, soluong);
 		return "redirect:" + request.getHeader("Referer");
 	}
@@ -160,7 +181,8 @@ public class UserController {
 	@GetMapping("/removeProductCart")
 	public String removeProductCart(HttpServletRequest request, @RequestParam("idProduct") int idProduct,
 			HttpSession session) {
-		int idUser = (Integer) session.getAttribute("idUser");
+		Integer idUser = (Integer) session.getAttribute("idUser");
+		if(idUser == null) return "redirect:/api/login";
 		productCartServices.removeProductCart(idUser, idProduct);
 		return "redirect:" + request.getHeader("Referer");
 	}
@@ -170,7 +192,8 @@ public class UserController {
 	// checkout
 	@GetMapping("/checkout")
 	public String checkout(HttpSession session,Model model) {
-		int idUser = (Integer) session.getAttribute("idUser");
+		Integer idUser = (Integer) session.getAttribute("idUser");
+		if(idUser == null) return "redirect:/api/login";
 		model.addAttribute("name", userServices.showUserid(idUser).getName());
 		UserModel userModel = userServices.showUserid(idUser);
 		model.addAttribute("userModel",userModel);
@@ -183,7 +206,8 @@ public class UserController {
 	
 	@GetMapping("/muangayrender")
 	public String muangayrender(HttpSession session,Model model) {
-		int idUser = (Integer) session.getAttribute("idUser");
+		Integer idUser = (Integer) session.getAttribute("idUser");
+		if(idUser == null) return "redirect:/api/login";
 		model.addAttribute("name", userServices.showUserid(idUser).getName());
 		UserModel userModel = userServices.showUserid(idUser);
 		model.addAttribute("userModel",userModel);
@@ -191,6 +215,7 @@ public class UserController {
 		ProductModel productModel = productServices.searchId(idProduct);
 		model.addAttribute("productModel",productModel);
 		String soluong = (String) session.getAttribute("soluong");
+		if(soluong == null) return "redirect:/api/login";
 		model.addAttribute("soluong",soluong);
 		return "/User/muangay";
 	}
