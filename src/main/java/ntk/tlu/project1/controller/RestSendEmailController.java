@@ -18,16 +18,16 @@ public class RestSendEmailController {
 	@Autowired EmailServices emailServices;
 	
 	// send email User khi dat hang
-	@GetMapping("/dangkythanhcong")
-	public void sendEmail(HttpSession session) {
-		int idUser = (Integer) session.getAttribute("idUser");
-		UserModel userModel = userServices.showUserid(idUser);
-		String to = userModel.getEmail();
-		String subject = "Bạn Đã Đặt Đơn Hàng Thành Công";
-		String text = "Chào "+userModel.getName()+ " , chúng tôi đã nhận được thông tin về đơn hàng bạn đã đặt . "
-				+ "Chúng tôi sẽ sớm liên hệ đến bạn và giao đơn hàng đến bạn trong thời gian sớm nhất"
-				+ "CẢM ƠN BẠN ĐÃ TIN TƯỞNG SẢN PHẨM CHÚNG TÔI , NTK XIN CHÂN THÀNH CẢM ƠN";
-		emailServices.sendEmail(to, subject, text);
-		
-	}
+//	@GetMapping("/dangkythanhcong")
+//	public void sendEmail(HttpSession session) {
+//		int idUser = (Integer) session.getAttribute("idUser");
+//		UserModel userModel = userServices.showUserid(idUser);
+//		String to = userModel.getEmail();
+//		String subject = "Bạn Đã Đặt Đơn Hàng Thành Công";
+//		String text = "Chào "+userModel.getName()+ " , chúng tôi đã nhận được thông tin về đơn hàng bạn đã đặt . "
+//				+ "Chúng tôi sẽ sớm liên hệ đến bạn và giao đơn hàng đến bạn trong thời gian sớm nhất"
+//				+ "CẢM ƠN BẠN ĐÃ TIN TƯỞNG SẢN PHẨM CHÚNG TÔI , NTK XIN CHÂN THÀNH CẢM ƠN";
+//		emailServices.sendEmail(to, subject, text);
+//		
+//	}
 }
