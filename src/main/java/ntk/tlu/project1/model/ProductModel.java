@@ -22,6 +22,7 @@ public class ProductModel {
 	private String priceBegin;
 	private int quantitySold;
 	private String productType;
+	private List<BillitemsModel> billItems;
 	// user and productWishlist
 	private List<UserModel> users;
 	public Integer getId() {
@@ -90,11 +91,18 @@ public class ProductModel {
 	public void setProductType(String productType) {
 		this.productType = productType;
 	}
+	public List<BillitemsModel> getBillItems() {
+		return billItems;
+	}
+	public void setBillItems(List<BillitemsModel> billItems) {
+		this.billItems = billItems;
+	}
 	public List<UserModel> getUsers() {
 		return users;
 	}
 	public void setUsers(List<UserModel> users) {
 		this.users = users;
 	}
+	
 	
 }

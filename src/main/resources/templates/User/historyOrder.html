@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <!-- Meta -->
@@ -15,6 +15,7 @@
 
 <!-- Bootstrap Core CSS -->
 <link rel="stylesheet" th:href="@{\assets\css\bootstrap.min.css}">
+
 <!-- Customizable CSS -->
 <link rel="stylesheet" th:href="@{\assets\css\main.css}">
 <link rel="stylesheet" th:href="@{\assets\css\blue.css}">
@@ -28,6 +29,7 @@
 
 
 <!-- Icons/Glyphs -->
+<link rel="stylesheet" th:href="@{\assets\css\font-awesome.css}">
 
 <!-- Fonts -->
 <link
@@ -38,8 +40,7 @@
 	rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700'
 	rel='stylesheet' type='text/css'>
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
 
 </head>
 <body class="cnt-home">
@@ -103,7 +104,7 @@
 					<div class="col-xs-12 col-sm-12 col-md-3 logo-holder">
 						<!-- ============================================================= LOGO ============================================================= -->
 						<div class="logo">
-							<a href="home.html"> <img th:src="@{\assets\images\logo.png}"
+							<a href="home.html"> <img th:src="@{assets\images\logo.png}"
 								alt="">
 
 							</a>
@@ -122,12 +123,20 @@
 
 									<ul class="categories-filter animate-dropdown">
 										<li class="dropdown"><a class="dropdown-toggle"
-											data-toggle="dropdown" href="category.html">Tìm kiếm</a>
-											<style>
-input:focus {
-	outline: none;
-}
-</style></li>
+											data-toggle="dropdown" href="category.html">Tìm kiếm </a>
+
+											<ul class="dropdown-menu" role="menu">
+												<li class="menu-header">Computer</li>
+												<li role="presentation"><a role="menuitem"
+													tabindex="-1" href="category.html">- Clothing</a></li>
+												<li role="presentation"><a role="menuitem"
+													tabindex="-1" href="category.html">- Electronics</a></li>
+												<li role="presentation"><a role="menuitem"
+													tabindex="-1" href="category.html">- Shoes</a></li>
+												<li role="presentation"><a role="menuitem"
+													tabindex="-1" href="category.html">- Watches</a></li>
+
+											</ul></li>
 									</ul>
 
 									<input class="search-field"
@@ -146,7 +155,11 @@ input:focus {
 					<div
 						class="col-xs-12 col-sm-12 col-md-2 animate-dropdown top-cart-row">
 						<!-- ============================================================= SHOPPING CART DROPDOWN ============================================================= -->
-
+						<style>
+input:focus {
+	outline: none !important;
+}
+</style>
 						<div class="dropdown dropdown-cart">
 							<a href="#" class="dropdown-toggle lnk-cart"
 								data-toggle="dropdown">
@@ -275,7 +288,6 @@ input:focus {
 
 					</div>
 					<!-- /.nav-bg-class -->
-
 				</div>
 				<!-- /.navbar-default -->
 			</div>
@@ -286,14 +298,13 @@ input:focus {
 		<!-- ============================================== NAVBAR : END ============================================== -->
 
 	</header>
-
 	<!-- ============================================== HEADER : END ============================================== -->
 	<div class="breadcrumb">
 		<div class="container">
 			<div class="breadcrumb-inner">
 				<ul class="list-inline list-unstyled">
-					<li><a href="#">Home</a></li>
-					<li class='active'>Checkout</li>
+					<li><a href="home.html">Home</a></li>
+					<li class='active'>Wishlist</li>
 				</ul>
 			</div>
 			<!-- /.breadcrumb-inner -->
@@ -304,200 +315,46 @@ input:focus {
 
 	<div class="body-content">
 		<div class="container">
-			<div class="checkout-box ">
+			<div class="my-wishlist-page">
 				<div class="row">
-					<div class="col-md-12">
-						<div class="panel-group checkout-steps" id="accordion">
-							<!-- checkout-step-01  -->
-							<div class="panel panel-default checkout-step-01">
+					<div class="col-md-12 my-wishlist">
+						<div class="table-responsive">
+							<table class="table">
+								<thead>
+									<tr>
+										<th colspan="5" class="heading-title">ĐƠN HÀNG CỦA TÔI</th>
+									</tr>
 
-								<!-- panel-heading -->
-								<div class="panel-heading">
-									<h4 class="unicase-checkout-title">
-										<a class="" data-parent="#accordion" href="#collapseOne"
-											style="font-size: 20px; text-align: center"> Phương Thức
-											Thanh Toán </a>
-									</h4>
-								</div>
-								<!-- panel-heading -->
-
-								<div id="collapseOne" class="panel-collapse collapse in">
-
-									<!-- panel-body  -->
-									<div class="panel-body">
-										<div class="row">
-
-											<!-- guest-login -->
-											<div class="col-md-6 col-sm-6 guest-login">
-												<h4 class="checkout-subtitle"
-													style="font-size: 15px; font-weight: 700">Thông tin
-													nhận hàng</h4>
-												<!-- radio-form  -->
-												<form action="/action_page.php">
-													<div class="mb-3 mt-3">
-														<input type="text" class="form-control" id="name"
-															th:value="${userModel.name}" name="name"
-															style="margin: 20px 0">
-													</div>
-													<div class="mb-3">
-														<input type="text" class="form-control" id="phone"
-															th:value="${userModel.phone}" placeholder="Số điện thoại"
-															name="pswd" style="margin: 20px 0">
-													</div>
-													<div class="mb-3">
-														<input type="email" class="form-control" id="email"
-															th:value="${userModel.email}" name="email"
-															style="margin: 20px 0">
-													</div>
-													<div class="mb-3">
-														<input type="text" class="form-control" id="address"
-															th:value="${userModel.address}" name="address"
-															style="margin: 20px 0">
-													</div>
-												</form>
-												<!-- radio-form  -->
-
-
-
-											</div>
-											<!-- guest-login -->
-
-											<!-- already-registered-login -->
-											<div class="col-md-6 col-sm-6 already-registered-login">
-												<h4 class="checkout-subtitle"
-													style="font-size: 15px; font-weight: 700">Đơn hàng của
-													bạn</h4>
-												<table class="table table-hover">
-													<thead>
-														<tr>
-															<th style="font-size: 14px">Sản phẩm</th>
-															<th style="font-size: 14px">Tạm tính</th>
-														</tr>
-													</thead>
-													<tbody>
-														<tr th:each="listProduct,item : ${listProducts}">
-															<td style="font-size: 12px; font-weight: 600"><span
-																th:text="${listProduct.name}"></span> <strong
-																th:utext="'  x'+${listQuantitis[item.index]}"></strong>
-															</td>
-															<td class="giasanpham"
-																th:utext="${tamtinhs[item.index]} + 'VNĐ'"
-																style="font-size: 12px; font-weight: 600">Doe</td>
-														</tr>
-														<tr>
-															<td style="font-size: 12px; font-weight: 600">Tạm
-																tính</td>
-															<td 
-																style="font-size: 12px; font-weight: 600" th:utext="${tong} + 'VNĐ'">Moe</td>
-														</tr>
-														<tr>
-															<td style="font-size: 12px; font-weight: 600">Tổng</td>
-															<td style="font-size: 12px; font-weight: 600"  th:utext="${tong} + 'VNĐ'">Dooley</td>
-														</tr>
-													</tbody>
-												</table>
-											</div>
-											<!-- already-registered-login -->
-										</div>
-									</div>
-									<!-- panel-body  -->
-
-								</div>
-								<!-- row -->
-							</div>
-							<!-- checkout-step-01  -->
-							<!-- checkout-step-02  -->
-							<div class="panel panel-default checkout-step-02">
-								<div class="panel-heading">
-									<h4 class="unicase-checkout-title">
-										<a data-toggle="collapse" class="collapsed"
-											href="#collapseTwo" style="font-size: 14px"><i
-											class="fa-solid fa-money-bills" style="padding-right: 5px"></i>  THANH TOÁN KHI NHẬN HÀNG
-										</a>
-									</h4>
-								</div>
-								<div id="collapseTwo" class="panel-collapse collapse">
-									<div class="panel-body">
-										<a th:href="@{/User/hoadon}" style="width: 100%; color: #000;  font-size: 14px; z-index: 500;text-align: center;cursor: pointer;">ĐẶT
-												HÀNG NGAY</a>
-									</div>
-								</div>
-							</div>
-							<!-- checkout-step-02  -->
-
-							<!-- checkout-step-03  -->
-							<div class="panel panel-default checkout-step-03">
-								<div class="panel-heading">
-									<h4 class="unicase-checkout-title">
-										<a data-toggle="collapse" class="collapsed"
-											href="#collapseThree" style="font-size: 14px"> <i
-											class="fa-solid fa-building-columns"
-											style="padding-right: 5px"></i>
-											THANH TOÁN QUA VNPay
-										</a>
-									</h4>
-								</div>
-								<div id="collapseThree" class="panel-collapse collapse">
-									<div class="panel-body" style="font-size: 14px"><a th:href="@{/submitOrder}" style="width: 100%; color: #000;  font-size: 14px; z-index: 500;text-align: center;cursor: pointer;">ĐẶT
-												HÀNG NGAY</a></div>
-								</div>
-							</div>
-							<!-- checkout-step-03  -->
-
-							<!-- checkout-step-04  -->
-							<div class="panel panel-default checkout-step-04">
-								<div class="panel-heading">
-									<h4 class="unicase-checkout-title">
-										<a data-toggle="collapse" class="collapsed"
-											href="#collapseFour" style="font-size: 14px"> <i
-											class="fa-brands fa-cc-paypal" style="padding-right: 5px;"></i>
-											Paypal
-										</a>
-									</h4>
-								</div>
-								<div id="collapseFour" class="panel-collapse collapse">
-									<div class="panel-body" style="font-size: 14px">Thanh
-										toán qua MOMO</div>
-								</div>
-							</div>
-							<!-- checkout-step-04  -->
-
-							<!-- checkout-step-05  -->
-							<div class="panel panel-default checkout-step-05">
-								<div class="panel-heading">
-									<h4 class="unicase-checkout-title">
-										<a data-toggle="collapse" class="collapsed"
-											href="#collapseFive" style="font-size: 14px"> <i
-											class="fa-brands fa-cc-amazon-pay"
-											style="padding-right: 5px; font-size: 14px"></i> Thanh toán
-											qua ZALOPAY
-										</a>
-									</h4>
-								</div>
-								<div id="collapseFive" class="panel-collapse collapse">
-									<div class="panel-body" style="font-size: 14px">
-										<a href="#">Hướng dẫn thanh toán qua VNPAY</a>.
-									</div>
-								</div>
-							</div>
-							<!-- checkout-step-05  -->
-
+								</thead>
+								<tbody>
+									<tr>
+										<th class="col-md-2">Mã đơn hàng</th>
+										<th class="col-md-2">Ngày mua</th>
+										<th class="col-md-3">Địa chỉ</th>
+										<th class="col-md-2">Giá trị đơn hàng</th>
+										<th class="col-md-3">Trạng thái đơn hàng</th>
+									</tr>
+									<tr th:each="billModel : ${billModels}">
+										<td class="col-md-2" th:text="${billModel.id}">#1735</td>
+										<td class="col-md-2" th:text="${billModel.buyDate}">20-3-2024</td>
+										<td class="col-md-2" th:text="${billModel.address}">Triệu Lộc,Hậu Lộc,Thanh Hóa</td>
+										<td class="col-md-2" >45.000đ</td>
+										<td class="col-md-4"><a href="#">Đã thanh toán</a></td>
+									</tr>
+								</tbody>
+							</table>
 						</div>
-						<!-- /.checkout-steps -->
 					</div>
 				</div>
 				<!-- /.row -->
 			</div>
-			<!-- /.checkout-box -->
+			<!-- /.sigin-in-->
 			<!-- ============================================== BRANDS CAROUSEL ============================================== -->
-
-			<!-- /.logo-slider -->
 			<!-- ============================================== BRANDS CAROUSEL : END ============================================== -->
 		</div>
 		<!-- /.container -->
 	</div>
 	<!-- /.body-content -->
-	<!-- ============================================================= FOOTER ============================================================= -->
 	<!-- ============================================================= FOOTER ============================================================= -->
 	<footer id="footer" class="footer color-bg">
 
@@ -507,7 +364,7 @@ input:focus {
 				<div class="row">
 					<div class="col-xs-12 col-sm-6 col-md-3">
 						<div class="module-heading">
-							<h4 class="module-title">Liên Hệ Chúng Tôi</h4>
+							<h4 class="module-title">Liên hệ chúng tôi</h4>
 						</div>
 						<!-- /.module-heading -->
 
@@ -553,7 +410,7 @@ input:focus {
 
 					<div class="col-xs-12 col-sm-6 col-md-3">
 						<div class="module-heading">
-							<h4 class="module-title">Dịch Vụ Khách Hàng</h4>
+							<h4 class="module-title">Dịch vụ khách hàng</h4>
 						</div>
 						<!-- /.module-heading -->
 
@@ -574,7 +431,7 @@ input:focus {
 
 					<div class="col-xs-12 col-sm-6 col-md-3">
 						<div class="module-heading">
-							<h4 class="module-title">Tập Đoàn</h4>
+							<h4 class="module-title">Tập đoàn</h4>
 						</div>
 						<!-- /.module-heading -->
 
@@ -617,11 +474,40 @@ input:focus {
 			</div>
 		</div>
 
-		<style>
-tbody>tr>td {
-	padding: 15px !important;
-}
-</style>
+		<div class="copyright-bar">
+			<div class="container">
+				<div class="col-xs-12 col-sm-6 no-padding social">
+					<ul class="link">
+						<li class="fb pull-left"><a target="_blank" rel="nofollow"
+							href="#" title="Facebook"></a></li>
+						<li class="tw pull-left"><a target="_blank" rel="nofollow"
+							href="#" title="Twitter"></a></li>
+						<li class="googleplus pull-left"><a target="_blank"
+							rel="nofollow" href="#" title="GooglePlus"></a></li>
+						<li class="rss pull-left"><a target="_blank" rel="nofollow"
+							href="#" title="RSS"></a></li>
+						<li class="pintrest pull-left"><a target="_blank"
+							rel="nofollow" href="#" title="PInterest"></a></li>
+						<li class="linkedin pull-left"><a target="_blank"
+							rel="nofollow" href="#" title="Linkedin"></a></li>
+						<li class="youtube pull-left"><a target="_blank"
+							rel="nofollow" href="#" title="Youtube"></a></li>
+					</ul>
+				</div>
+				<div class="col-xs-12 col-sm-6 no-padding">
+					<div class="clearfix payment-methods">
+						<ul>
+							<li><img th:src="@{\assets\images\payments\1.png}" alt=""></li>
+							<li><img th:src="@{\assets\images\payments\2.png}" alt=""></li>
+							<li><img th:src="@{\assets\images\payments\3.png}" alt=""></li>
+							<li><img th:src="@{\assets\images\payments\4.png}" alt=""></li>
+							<li><img th:src="@{\assets\images\payments\5.png}" alt=""></li>
+						</ul>
+					</div>
+					<!-- /.payment-methods -->
+				</div>
+			</div>
+		</div>
 	</footer>
 	<!-- ============================================================= FOOTER : END============================================================= -->
 
@@ -632,22 +518,42 @@ tbody>tr>td {
 	<!-- For demo purposes – can be removed on production : End -->
 
 	<!-- JavaScripts placed at the end of the document so the pages load faster -->
-	<script th:src="@{\assets\js\jquery-1.11.1.min.js}"></script>
+	<script th:src="@{/assets\js\jquery-1.11.1.min.js}"></script>
 
-	<script th:src="@{\assets\js\bootstrap.min.js}"></script>
+	<script th:src="@{/assets\js\bootstrap.min.js}"></script>
 
-	<script th:src="@{\assets\js\bootstrap-hover-dropdown.min.js}"></script>
-	<script th:src="@{\assets\js\owl.carousel.min.js}"></script>
+	<script th:src="@{/assets\js\bootstrap-hover-dropdown.min.js}"></script>
+	<script th:src="@{/assets\js\owl.carousel.min.js}"></script>
 
-	<script th:src="@{\assets\js\echo.min.js}"></script>
-	<script th:src="@{\assets\js\jquery.easing-1.3.min.js}"></script>
-	<script th:src="@{\assets\js\bootstrap-slider.min.js}"></script>
-	<script th:src="@{\assets\js\jquery.rateit.min.js}"></script>
-	<script type="text/javascript" th:src="@{\assets\js\lightbox.min.js}"></script>
-	<script th:src="@{\assets\js\bootstrap-select.min.js}"></script>
-	<script th:src="@{\assets\js\wow.min.js}"></script>
-	<script th:src="@{\assets\js\scripts.js}"></script>
-	<script th:src="@{\assets\js\NTK\User\ajax\ajaxsendEmailUser.js}"></script>
+	<script th:src="@{/assets\js\echo.min.js}"></script>
+	<script th:src="@{/assets\js\jquery.easing-1.3.min.js}"></script>
+	<script th:src="@{/assets\js\bootstrap-slider.min.js}"></script>
+	<script th:src="@{/assets\js\jquery.rateit.min.js}"></script>
+	<script type="text/javascript" th:src="@{/assets\js\lightbox.min.js}"></script>
+	<script th:src="@{/assets\js\bootstrap-select.min.js}"></script>
+	<script th:src="@{/assets\js\wow.min.js}"></script>
+	<script th:src="@{/assets\js\scripts.js}"></script>
+
+	<!-- For demo purposes – can be removed on production -->
+
+	<script src="switchstylesheet/switchstylesheet.js"></script>
+
+	<script>
+		$(document).ready(function() {
+			$(".changecolor").switchstylesheet({
+				seperator : "color"
+			});
+			$('.show-theme-options').click(function() {
+				$(this).parent().toggleClass('open');
+				return false;
+			});
+		});
+
+		$(window).bind("load", function() {
+			$('.show-theme-options').delay(2000).trigger('click');
+		});
+	</script>
+	<!-- For demo purposes – can be removed on production : End -->
 
 
 

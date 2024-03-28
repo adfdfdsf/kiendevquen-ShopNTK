@@ -19,8 +19,9 @@ public class BillEntity {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	private Date buyDate;
-	
+	private String buyDate;
+	private String address;
+
 	@ManyToOne
     @JoinColumn(name = "user_id")
     private UserEntity userEntity;
@@ -30,25 +31,39 @@ public class BillEntity {
 	public Long getId() {
 		return id;
 	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public Date getBuyDate() {
+	
+	public String getBuyDate() {
 		return buyDate;
 	}
 
-	public void setBuyDate(Date buyDate) {
+	public void setBuyDate(String buyDate) {
 		this.buyDate = buyDate;
 	}
 
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
 	public UserEntity getUserEntity() {
 		return userEntity;
 	}
-
 	public void setUserEntity(UserEntity userEntity) {
 		this.userEntity = userEntity;
 	}
+	public List<BillitemsEntity> getBillitemsEntities() {
+		return billitemsEntities;
+	}
+	public void setBillitemsEntities(List<BillitemsEntity> billitemsEntities) {
+		this.billitemsEntities = billitemsEntities;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
+	
+	
+
+	
 	
 }

@@ -777,7 +777,7 @@
 											<div class="col-sm-5">
 												<a onclick="muangayDetail(this.getAttribute('data-id'))"
 													th:data-id="${productEntity.id}"
-													th:href="@{/User/muangayrender}" class="btn btn-primary">
+													th:href="@{/User/muangayrender(idProduct=${productEntity.id})}" class="btn btn-primary">
 													<i class="fa fa-shopping-cart inner-right-vs"></i> Mua ngay
 												</a>
 											</div>

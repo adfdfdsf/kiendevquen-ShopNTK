@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -35,11 +34,27 @@ public class ProductEntity {
 	@JsonBackReference
 	@ManyToMany(mappedBy = "products")
 	private List<UserEntity> users;
-	
-	@OneToMany(mappedBy = "productEntity", cascade = CascadeType.ALL, orphanRemoval = true)
-	private List<BillitemsEntity> billitemsEntities;
-	// user and productCart
-	
+
+	 @OneToMany(mappedBy = "productEntity")
+	 private List<BillitemsEntity> billItems;
+
+	 
+	public List<UserEntity> getUsers() {
+		return users;
+	}
+
+	public void setUsers(List<UserEntity> users) {
+		this.users = users;
+	}
+
+	public List<BillitemsEntity> getBillItems() {
+		return billItems;
+	}
+
+	public void setBillItems(List<BillitemsEntity> billItems) {
+		this.billItems = billItems;
+	}
+
 	public String getProductType() {
 		return productType;
 	}

@@ -32,6 +32,14 @@ public class UserModel {
 	private String repassword;
 	// danh sach san pham nguoi dung yeu thich user va productWishlist
     private List<ProductModel> products;
+    public List<BillModel> bills;
+    
+	public List<BillModel> getBills() {
+		return bills;
+	}
+	public void setBills(List<BillModel> bills) {
+		this.bills = bills;
+	}
 	// user and productCart
 	public Integer getId() {
 		return id;

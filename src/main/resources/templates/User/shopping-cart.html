@@ -351,7 +351,7 @@ input:focus {
 													<button id="plus"
 														th:onclick="'plusQuantity(' + ${item.index} + ')'">+</button>
 												</div></td>
-											<td class="sum_checkout"></td>
+											<td th:utext="${tamtinhs[item.index]} + 'VNĐ'"></td>
 										</tr>
 									</tbody>
 								</table>
@@ -380,13 +380,13 @@ th, td {
 									<thead>
 										<tr>
 											<th class="cart-product-name item col-1">Tạm tính</th>
-											<th class="tong">338.000 VNĐ</th>
+											<th th:utext="${tong} + 'VNĐ'">338.000 VNĐ</th>
 										</tr>
 									</thead>
 									<tbody>
 										<tr>
 											<td class="productCart_tong" style="text-align: center;">Tổng</td>
-											<td style="text-align: center;" class="tong">338.000 VNĐ</td>
+											<td style="text-align: center;" th:utext="${tong} + 'VNĐ'"></td>
 										</tr>
 									</tbody>
 								</table>
@@ -567,34 +567,6 @@ th, td {
 
 
 				<!-- For demo purposes – can be removed on production : End -->
-				<script>
-					var lengths = document
-							.getElementsByClassName("product_price").length;
-					var tong = 0;
-					for (var i = 0; i < lengths; i++) {
-						var product_price = parseFloat(document
-								.getElementsByClassName("product_price")[i].textContent
-								.replace(/\./g, ""));
-						console.log(product_price);
-						var soluong = parseFloat(document
-								.getElementsByClassName("soluong")[i].value
-								.replace(/\./g, ""));
-						var sum_checkout = product_price * soluong;
-						tong = tong + sum_checkout;
-
-						document.getElementsByClassName("sum_checkout")[i].innerHTML = sum_checkout
-								.toLocaleString()
-								+ 'VNĐ';
-					}
-					console.log(tong);
-					var tongkhac = tong.toLocaleString() + 'VNĐ';
-					document.getElementsByClassName("tong")[0].innerHTML = tong
-							.toLocaleString()
-							+ 'VNĐ';
-					document.getElementsByClassName("tong")[1].innerHTML = tong
-							.toLocaleString()
-							+ 'VNĐ';
-				</script>
 
 				<!-- JavaScripts placed at the end of the document so the pages load faster -->
 				<script th:src="@{\assets\js\jquery-1.11.1.min.js}"></script>

@@ -148,7 +148,7 @@ public class RestUserController {
 		}
 		productCartServices.updateProduct(listQuantitis, idUser);
 	}
-
+	// lay du lieu tu ajax muangayDetail : soluong ,idProduct
 	@GetMapping("/muangay")
 	public void muangay(HttpSession session, @RequestParam("soluong") String soluong,
 			@RequestParam("idProduct") int idProduct) {
@@ -156,13 +156,7 @@ public class RestUserController {
 		session.setAttribute("idProduct", idProduct);
 	}
 
-	// checkout
-	@GetMapping("/restcheckout")
-	public void checkout(@RequestParam("jsonPriceProduct") String jsonPriceProduct, HttpSession session) {
-		Gson gson = new Gson();
-		String[] priceProduct = gson.fromJson(jsonPriceProduct, String[].class);
-		session.setAttribute("priceProduct", priceProduct);
-	}
+	
 
 	
 }
