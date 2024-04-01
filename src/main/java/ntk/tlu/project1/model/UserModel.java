@@ -32,8 +32,15 @@ public class UserModel {
 	private String repassword;
 	// danh sach san pham nguoi dung yeu thich user va productWishlist
     private List<ProductModel> products;
-    public List<BillModel> bills;
+    private List<BillModel> bills;
+    private String role;
     
+	public String getRole() {
+		return role;
+	}
+	public void setRole(String role) {
+		this.role = role;
+	}
 	public List<BillModel> getBills() {
 		return bills;
 	}

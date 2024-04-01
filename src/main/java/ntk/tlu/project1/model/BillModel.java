@@ -12,6 +12,14 @@ public class BillModel {
 	private UserModel userEntity;
 	private List<BillitemsModel>  billitemsEntities;
 	private String address;
+	private String tongHoaDon;
+	
+	public String getTongHoaDon() {
+		return tongHoaDon;
+	}
+	public void setTongHoaDon(String tongHoaDon) {
+		this.tongHoaDon = tongHoaDon;
+	}
 	public Long getId() {
 		return id;
 	}

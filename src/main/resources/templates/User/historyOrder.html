@@ -59,8 +59,7 @@
 									class="icon fa fa-heart"></i>Danh sách yêu thích</a></li>
 							<li><a th:href="@{/User/cart}"><i
 									class="icon fa fa-shopping-cart"></i>Giỏ hàng của tôi</a></li>
-							<li><a href="#"><i class="icon fa fa-check"></i>Thủ tục
-									thanh toán</a></li>
+							<li><a href="@{/User/historyOrder}"><i class="icon fa fa-check"></i>Lịch sử mua hàng</a></li>
 							<li><a href="#" th:text="${name}"><i
 									class="icon fa fa-lock"></i>Đăng nhập</a></li>
 						</ul>
@@ -314,7 +313,7 @@ input:focus {
 	<!-- /.breadcrumb -->
 
 	<div class="body-content">
-		<div class="container">
+		<div class="container" style="width: 100%;">
 			<div class="my-wishlist-page">
 				<div class="row">
 					<div class="col-md-12 my-wishlist">
@@ -328,18 +327,21 @@ input:focus {
 								</thead>
 								<tbody>
 									<tr>
-										<th class="col-md-2">Mã đơn hàng</th>
+										<th class="col-md-1">Mã đơn</th>
 										<th class="col-md-2">Ngày mua</th>
 										<th class="col-md-3">Địa chỉ</th>
-										<th class="col-md-2">Giá trị đơn hàng</th>
+										<th class="col-md-1">Tổng đơn</th>
+										<th class="col-md-2">Chi tiết đơn hàng</th>
 										<th class="col-md-3">Trạng thái đơn hàng</th>
+										
 									</tr>
-									<tr th:each="billModel : ${billModels}">
-										<td class="col-md-2" th:text="${billModel.id}">#1735</td>
+									<tr th:each="billModel,item : ${billModels}">
+										<td class="col-md-1" th:utext="'#'+${billModel.id}">#1735</td>
 										<td class="col-md-2" th:text="${billModel.buyDate}">20-3-2024</td>
 										<td class="col-md-2" th:text="${billModel.address}">Triệu Lộc,Hậu Lộc,Thanh Hóa</td>
-										<td class="col-md-2" >45.000đ</td>
-										<td class="col-md-4"><a href="#">Đã thanh toán</a></td>
+										<td class="col-md-1" th:utext="${billModel.tongHoaDon}+'VNĐ'">45.000đ</td>
+										<td class="col-md-3"><a href="#">Xem chi tiết</a></td>
+										<td class="col-md-3"><a href="#">Đang Chờ Duyệt Đơn</a></td>
 									</tr>
 								</tbody>
 							</table>
@@ -348,6 +350,11 @@ input:focus {
 				</div>
 				<!-- /.row -->
 			</div>
+			<style>
+				th,tr {
+				text-align: center;
+				}
+			</style>
 			<!-- /.sigin-in-->
 			<!-- ============================================== BRANDS CAROUSEL ============================================== -->
 			<!-- ============================================== BRANDS CAROUSEL : END ============================================== -->

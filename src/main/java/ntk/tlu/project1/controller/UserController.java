@@ -298,6 +298,7 @@ public class UserController {
 		BillModel billModel = new BillModel();
 		billModel.setUserEntity(userModel);
 		billModel.setAddress(userServices.showUserid(idUser).getAddress());
+		billModel.setTongHoaDon(tong);
 		BillEntity billEntity = billServices.createBill(billModel);
 		billModel.setId(billEntity.getId());
 		//
@@ -320,6 +321,8 @@ public class UserController {
 		List<BillModel> billModels = billServices.showBill(idUser);
 		logger.info("So luong: "+billModels.size());
 		model.addAttribute("billModels",billModels);
+		model.addAttribute("listBillitemsModel",billItemsServices.showBillitemsModels());
 		return "/User/historyOrder";
 	}
+	
 }

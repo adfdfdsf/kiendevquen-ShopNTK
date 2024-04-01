@@ -49,7 +49,20 @@ public class UserEntity {
 	 // Một User có nhiều Bill
     @OneToMany(mappedBy = "userEntity", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<BillEntity> bills;
+    private String role="User";
     
+	public List<BillEntity> getBills() {
+		return bills;
+	}
+	public void setBills(List<BillEntity> bills) {
+		this.bills = bills;
+	}
+	public String getRole() {
+		return role;
+	}
+	public void setRole(String role) {
+		this.role = role;
+	}
 	public Integer getId() {
 		return id;
 	}

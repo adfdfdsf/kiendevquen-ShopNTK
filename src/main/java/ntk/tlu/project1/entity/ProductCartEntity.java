@@ -16,7 +16,7 @@ public class ProductCartEntity {
 	@ManyToOne
 	@JoinColumn(name = "user_id")
 	private UserEntity userEntity;
-
+	
 	@ManyToOne
 	@JoinColumn(name = "product_id")
 	private ProductEntity productEntity;

@@ -1,11 +1,15 @@
 package ntk.tlu.project1.services;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ntk.tlu.project1.entity.ProductEntity;
 import ntk.tlu.project1.entity.UserEntity;
+import ntk.tlu.project1.model.ProductModel;
 import ntk.tlu.project1.model.UserModel;
 import ntk.tlu.project1.repository.ProductCartRepo;
 import ntk.tlu.project1.repository.ProductRepo;
@@ -34,6 +38,14 @@ public class UserServices {
 			return true;
 		}
 		return false;
+	}
+	
+	// SHOW ALL USER
+	public List<UserModel> showAllUser() {
+		List<UserEntity> userEntities = userRepo.findAll();
+		List<UserModel> userModels = userEntities.stream().map(entity -> modelMapper.map(entity, UserModel.class))
+	            .collect(Collectors.toList());
+		return userModels;
 	}
 
 	// Search User theo Email

@@ -28,6 +28,16 @@ public class BillEntity {
 	
 	@OneToMany(mappedBy = "billEntity", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<BillitemsEntity> billitemsEntities;
+	private String tongHoaDon;
+	
+	public String getTongHoaDon() {
+		return tongHoaDon;
+	}
+
+	public void setTongHoaDon(String tongHoaDon) {
+		this.tongHoaDon = tongHoaDon;
+	}
+
 	public Long getId() {
 		return id;
 	}
